@@ -102,119 +102,296 @@ a {
     min-height: 100vh;
 
     display: grid;
-    grid-template-columns: 1fr 0.85fr;
-    align-items: center;
+    grid-template-columns: 0.95fr 1.05fr;
 
-    padding: 140px 8vw 80px;
+    background: var(--paper);
 
-    background:
-        radial-gradient(
-            circle at 80% 30%,
-            #e9dfd1 0%,
-            transparent 35%
-        );
+    padding-top: 82px;
+
+    overflow: hidden;
 }
+
+
+/* Left side */
 
 .hero-content {
-    max-width: 680px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding:
+        90px
+        clamp(40px, 7vw, 110px);
+
+    position: relative;
+
+    z-index: 2;
 }
 
-.eyebrow,
-.section-label {
+
+.eyebrow {
+
     font-size: 11px;
+
     letter-spacing: 4px;
+
     color: var(--gold);
-    margin-bottom: 22px;
+
+    margin-bottom: 28px;
 }
+
 
 .hero h1 {
-    font-size: clamp(55px, 8vw, 110px);
-    line-height: 1.1;
+
+    font-family: "Noto Serif TC", serif;
+
+    font-size:
+        clamp(58px, 6vw, 96px);
+
     font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
 }
 
+
 .hero h1 span {
+
     display: block;
-    font-family: "Noto Sans TC", sans-serif;
-    font-size: 22px;
-    letter-spacing: 7px;
-    margin-top: 10px;
+
+    margin-top: 16px;
+
+    font-family:
+        "Noto Sans TC",
+        sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 400;
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+
     color: var(--brown);
 }
 
-.hero h2 {
-    font-family: "Noto Sans TC", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+
+.hero-role {
+
+    margin-top: 35px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    color: var(--brown);
+}
+
+
+.hero-line {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 34px 0;
+}
+
+
+.hero-quote {
+
+    font-family:
+        "Noto Serif TC",
+        serif;
+
+    font-size:
+        clamp(27px, 2.6vw, 42px);
+
+    line-height: 1.65;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+}
+
+
+.hero-intro {
+
+    margin-top: 30px;
+
+    max-width: 560px;
+
+    font-size: 15px;
+
+    line-height: 2;
+
+    color: #675f57;
+}
+
+
+.hero-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
     margin-top: 28px;
 }
 
-.hero-description {
-    font-family: "Noto Serif TC", serif;
-    font-size: 26px;
-    line-height: 1.7;
-    margin-top: 30px;
-    max-width: 600px;
+
+.hero-tags span {
+
+    padding: 6px 13px;
+
+    border: 1px solid #d7cfc5;
+
+    border-radius: 100px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    color: var(--brown);
+
+    background:
+        rgba(255,255,255,0.5);
 }
+
 
 .hero-buttons {
+
     display: flex;
-    gap: 15px;
-    margin-top: 35px;
+
+    gap: 14px;
+
+    margin-top: 38px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 13px 28px;
-    border: 1px solid var(--dark);
-    transition: 0.3s;
+
+/* Right photo */
+
+.hero-photo {
+
+    position: relative;
+
+    min-height:
+        calc(100vh - 82px);
+
+    overflow: hidden;
+
+    background: #1e1e1e;
 }
 
-.btn.primary {
-    background: var(--dark);
-    color: white;
+
+.hero-photo img {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    /*
+       這張照片人物在畫面中央偏右，
+       這個數字可之後依實際網站調整
+    */
+
+    object-position: 54% center;
+
+    display: block;
+
+    filter:
+        contrast(1.02)
+        saturate(0.92);
 }
 
-.btn.primary:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-}
 
-.btn.secondary:hover {
-    background: var(--dark);
-    color: white;
-}
+/*
+Gradient transition between text and image
+*/
 
-.hero-image {
-    display: flex;
-    justify-content: center;
-}
+.hero-photo::before {
 
-.image-placeholder {
-    width: min(420px, 90%);
-    aspect-ratio: 4 / 5;
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 23%;
+
+    height: 100%;
 
     background:
         linear-gradient(
-            145deg,
-            #ddd1c0,
-            #bcae9b
+            90deg,
+            rgba(251,249,245,0.28),
+            rgba(251,249,245,0)
         );
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 1;
 
-    font-family: "Noto Serif TC", serif;
+    pointer-events: none;
+}
+
+
+.photo-caption {
+
+    position: absolute;
+
+    right: 32px;
+
+    bottom: 28px;
+
+    z-index: 3;
+
+    color: white;
+
+    text-align: right;
+
+    text-shadow:
+        0 1px 8px
+        rgba(0,0,0,0.25);
+}
+
+
+.photo-caption span {
+
+    display: block;
+
+    font-family:
+        "Noto Serif TC",
+        serif;
+
+    font-size: 13px;
+
     letter-spacing: 4px;
-
-    box-shadow: 30px 30px 0 rgba(165,138,101,0.15);
 }
 
-.image-placeholder span {
-    opacity: 0.5;
-}
 
+.photo-caption small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.7;
+}
 
 /* =========================
    Numbers
